@@ -50,7 +50,7 @@ pub fn decompress_file(
     {
         let zip_archive = zip::ZipArchive::new(reader)?;
         let files_unpacked = if let ControlFlow::Continue(files) = smart_unpack(
-            |output_dir| crate::archive::zip::unpack_archive(zip_archive, output_dir, quiet),
+            |output_dir| crate::archive::zip::unpack_archive(zip_archive, output_dir, password, quiet),
             output_dir,
             &output_file_path,
             question_policy,
@@ -137,7 +137,7 @@ pub fn decompress_file(
             let zip_archive = zip::ZipArchive::new(io::Cursor::new(vec))?;
 
             if let ControlFlow::Continue(files) = smart_unpack(
-                |output_dir| crate::archive::zip::unpack_archive(zip_archive, output_dir, quiet),
+                |output_dir| crate::archive::zip::unpack_archive(zip_archive, output_dir, password, quiet),
                 output_dir,
                 &output_file_path,
                 question_policy,
