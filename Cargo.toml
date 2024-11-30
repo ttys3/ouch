@@ -87,3 +87,6 @@ lto = false
 opt-level = 2
 incremental = true
 codegen-units = 16
+
+[patch.crates-io]
+unrar = { git = "https://github.com/muja/unrar.rs", branch = "master" }
